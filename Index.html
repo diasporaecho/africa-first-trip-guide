@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diaspora Echo — First Light: A First-Timer's Guide to Africa · by Anthony</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1714;--paper:#f4ece0;--paper-2:#ece0cf;
+    --terra:#bd4b27;--ochre:#d98a3a;--clay:#8a3318;--sage:#5c6b4a;--gold:#c9962f;
+    --line:rgba(28,23,20,.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .kicker{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.28em;font-size:.66rem;font-weight:500}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+
+  /* COVER */
+  .cover{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:42px 28px 56px;color:var(--paper);overflow:hidden;
+    background:radial-gradient(120% 90% at 80% 10%, rgba(217,138,58,.55), transparent 55%),radial-gradient(100% 80% at 10% 90%, rgba(92,107,74,.6), transparent 50%),linear-gradient(160deg,#2a1c12 0%, #5a2410 45%, #8a3318 75%, #bd4b27 100%)}
+  .cover::after{content:"";position:absolute;inset:0;opacity:.16;pointer-events:none;background:repeating-linear-gradient(115deg,transparent 0 38px,rgba(244,236,224,.5) 38px 39px)}
+  .cover-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2;flex-wrap:wrap;gap:14px}
+  .cover-top .kicker{color:rgba(244,236,224,.85)}
+  .issue{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-align:right;color:rgba(244,236,224,.7)}
+  .cover-center{position:relative;z-index:2;margin:auto 0}
+  .brandmark{display:block;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.34em;font-size:.7rem;color:var(--gold);margin-bottom:18px}
+  .cover-center h1{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(3.4rem,13vw,9rem);line-height:.9;letter-spacing:-.02em}
+  .cover-center h1 b{font-weight:600;font-style:normal;display:block;letter-spacing:-.03em}
+  .cover-sub{margin-top:26px;max-width:34ch;font-size:1.18rem;line-height:1.5;color:rgba(244,236,224,.9);font-weight:300}
+  .byline{margin-top:22px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,224,.72);border-top:1px solid rgba(201,150,47,.45);padding-top:12px;display:inline-block}
+  .cover-foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .cover-foot .lines{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;line-height:1.9;color:rgba(244,236,224,.78);text-transform:uppercase}
+  .scrollcue{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.2em;color:rgba(244,236,224,.7);writing-mode:vertical-rl;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+  /* OPENER */
+  .opener{padding:90px 0 70px}
+  .opener .kicker{color:var(--clay)}
+  .dropcap{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5vw,3.2rem);line-height:1.25;margin:18px 0 0;max-width:24ch;letter-spacing:-.01em}
+  .dropcap .em{font-style:italic;color:var(--terra)}
+  .essay{columns:2;column-gap:48px;margin-top:42px;font-size:1.02rem;line-height:1.7}
+  .essay p{margin-bottom:1.1em;break-inside:avoid}
+  .essay p:first-child::first-letter{font-family:'Fraunces',serif;font-weight:600;float:left;font-size:4.4rem;line-height:.78;padding:6px 12px 0 0;color:var(--terra)}
+
+  /* PATHS INTRO */
+  .pathsintro{background:var(--ink);color:var(--paper);padding:84px 0}
+  .pathsintro .kicker{color:var(--ochre)}
+  .pathsintro h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,6vw,4rem);line-height:1.02;margin:14px 0 8px;letter-spacing:-.02em}
+  .pathsintro h2 i{color:var(--ochre)}
+  .pathsintro .lede{max-width:62ch;color:rgba(244,236,224,.78);font-size:1.1rem;margin-bottom:46px}
+  .pathnav{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,224,.16);border:1px solid rgba(244,236,224,.16)}
+  .pathnav a{background:var(--ink);padding:30px 24px;text-decoration:none;color:var(--paper);transition:background .35s;display:block}
+  .pathnav a:hover{background:#2a221c}
+  .pathnav .n{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--ochre);letter-spacing:.2em}
+  .pathnav h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;margin:10px 0 8px;line-height:1.05}
+  .pathnav p{font-size:.92rem;color:rgba(244,236,224,.72);line-height:1.5}
+  .pathnav .go{display:inline-block;margin-top:14px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+
+  /* PATH SECTIONS */
+  .path{padding:84px 0 30px;border-bottom:1px solid var(--line)}
+  .path-head{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start}
+  .path-num{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(3rem,9vw,6rem);line-height:.8;color:var(--terra);font-style:italic}
+  .path-head .kicker{color:var(--clay)}
+  .path-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,6vw,3.4rem);line-height:.98;letter-spacing:-.02em;margin:6px 0 0}
+  .path-tag{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--clay);margin-top:10px;max-width:34ch;line-height:1.35}
+  .path-why{font-size:1.05rem;margin:24px 0 0;max-width:64ch}
+  .echo{margin-top:22px;background:var(--ink);color:var(--paper);padding:18px 22px;border-radius:2px;max-width:64ch}
+  .echo b{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);display:block;margin-bottom:6px}
+  .echo span{font-size:.96rem;color:rgba(244,236,224,.9)}
+
+  /* trip facts strip */
+  .strip{display:flex;flex-wrap:wrap;gap:0;margin:30px 0 6px;border:1px solid var(--line);background:var(--paper-2)}
+  .strip .cell{flex:1;min-width:150px;padding:16px 18px;border-right:1px solid var(--line)}
+  .strip .cell:last-child{border-right:none}
+  .strip .kicker{color:var(--sage);display:block;margin-bottom:5px}
+  .strip .v{font-size:.98rem;font-weight:500;line-height:1.3}
+
+  /* destination cards within a path */
+  .dests{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px}
+  .dest{border:1px solid var(--line);background:var(--paper);overflow:hidden;display:flex;flex-direction:column}
+  .dest .art{aspect-ratio:16/9;position:relative;overflow:hidden}
+  .dest .art::after{content:"";position:absolute;inset:0;opacity:.12;background:repeating-linear-gradient(45deg,transparent 0 14px,rgba(0,0,0,.5) 14px 15px)}
+  .dest .art .label{position:absolute;bottom:12px;left:14px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);z-index:3}
+  .dest .art .sun{position:absolute;width:38%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.22);top:-10%;right:12%;filter:blur(2px)}
+  .dest .body{padding:22px 22px 26px}
+  .dest h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.6rem;line-height:1;margin-bottom:2px}
+  .dest .country{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+  .dest p{font-size:.95rem;margin-top:12px}
+  .dest .tip{margin-top:14px;border-left:3px solid var(--terra);padding:8px 14px;background:var(--paper-2);font-size:.88rem}
+  .dest .tip b{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:3px}
+  .a-ghana{background:radial-gradient(70% 80% at 30% 70%,#3f8f6d,transparent),linear-gradient(160deg,#c9962f,#8a3318)}
+  .a-senegal{background:radial-gradient(70% 70% at 70% 30%,#e0b34d,transparent),linear-gradient(150deg,#b6602a,#5a2410)}
+  .a-morocco{background:radial-gradient(80% 70% at 30% 20%,#e8a23d,transparent),linear-gradient(160deg,#b6422a,#6d2412)}
+  .a-southafrica{background:radial-gradient(70% 80% at 70% 70%,#bd4b27,transparent),linear-gradient(160deg,#5c6b4a,#23301c)}
+  .a-kenya{background:radial-gradient(80% 70% at 60% 20%,#d98a3a,transparent),linear-gradient(160deg,#9a5a2a,#3f4a32)}
+  .a-tanzania{background:radial-gradient(70% 70% at 30% 30%,#5fb3c4,transparent),linear-gradient(150deg,#2b7d8c,#143b44)}
+
+  /* FLIGHT REALITY */
+  .flights{padding:84px 0}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-.02em}
+  .section-head .kicker{color:var(--clay)}
+  .flights .note{max-width:64ch;margin:8px 0 30px;font-size:1.02rem}
+  .bars{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  .bar{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:14px}
+  .bar .dest-n{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+  .bar .track{height:22px;background:var(--paper-2);border:1px solid var(--line);position:relative;overflow:hidden}
+  .bar .fill{height:100%;background:linear-gradient(90deg,var(--ochre),var(--terra))}
+  .bar .hrs{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;white-space:nowrap}
+  .flights .caption{margin-top:16px;font-size:.85rem;color:var(--sage);font-style:italic;max-width:60ch}
+
+  /* SOLO VS FAMILY + KNOW */
+  .know{background:var(--paper-2);padding:84px 0}
+  .know .section-head{border-color:var(--clay)}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:30px 0 10px}
+  .col{background:var(--paper);border:1px solid var(--line);padding:28px 26px}
+  .col h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;margin-bottom:6px}
+  .col .sub{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-bottom:14px}
+  .col ul{list-style:none}
+  .col li{font-size:.94rem;padding:8px 0 8px 20px;position:relative;border-bottom:1px dotted var(--line);line-height:1.5}
+  .col li:last-child{border-bottom:none}
+  .col li::before{content:"→";position:absolute;left:0;color:var(--ochre);font-family:'DM Mono',monospace}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;margin-top:30px}
+  .card{background:var(--paper);border:1px solid var(--line);padding:28px 26px;position:relative}
+  .card .ix{font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--terra);position:absolute;top:18px;right:22px}
+  .card h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin-bottom:14px;max-width:14ch}
+  .card ul{list-style:none}
+  .card li{font-size:.92rem;padding:7px 0 7px 20px;position:relative;border-bottom:1px dotted var(--line);line-height:1.5}
+  .card li:last-child{border-bottom:none}
+  .card li::before{content:"→";position:absolute;left:0;color:var(--ochre);font-family:'DM Mono',monospace}
+  .myth li::before{content:"\2715";color:var(--clay)}
+  .myth .real{display:block;color:var(--sage);font-size:.85rem;margin-top:2px}
+  .myth .real::before{content:"\2713 ";color:var(--sage);font-weight:700}
+
+  /* ROUTES */
+  .routes{padding:84px 0}
+  .route{border-top:2px solid var(--ink);padding:34px 0;display:grid;grid-template-columns:230px 1fr;gap:36px}
+  .route:last-child{border-bottom:2px solid var(--ink)}
+  .route-h .kicker{color:var(--terra)}
+  .route-h h3{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:2rem;line-height:1;margin-top:8px}
+  .route-h .days{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--sage);margin-top:10px;letter-spacing:.1em}
+  .route-body p{font-size:1rem;margin-bottom:16px;max-width:60ch}
+  .pathline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em}
+  .pathline .stop{background:var(--ink);color:var(--paper);padding:6px 13px;border-radius:2px}
+  .pathline .arr{color:var(--ochre)}
+
+  /* OUTRO */
+  .outro{background:var(--ink);color:var(--paper);padding:90px 0 70px;text-align:center}
+  .outro .kicker{color:var(--ochre)}
+  .outro p{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(1.6rem,5vw,2.8rem);line-height:1.25;max-width:26ch;margin:20px auto 0;letter-spacing:-.01em}
+  .outro .cta{margin-top:34px;display:inline-block;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--ochre);padding:14px 26px;text-decoration:none}
+  .outro .mast{margin-top:40px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:rgba(244,236,224,.6);text-transform:uppercase}
+
+  @media(max-width:760px){
+    body{font-size:17px}
+    .essay{columns:1}
+    .pathnav{grid-template-columns:1fr}
+    .path-head{grid-template-columns:1fr;gap:8px}
+    .dests,.split{grid-template-columns:1fr}
+    .bar{grid-template-columns:96px 1fr auto;gap:10px}
+    .route{grid-template-columns:1fr;gap:18px}
+  }
+  @media print{body{background:#fff}.cover{min-height:auto}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-top">
+    <span class="kicker">Diaspora Echo · Field Edition</span>
+    <span class="issue">No. 01<br>The Homecoming Issue</span>
+  </div>
+  <div class="cover-center">
+    <span class="brandmark">Diaspora Echo</span>
+    <h1>First<i> </i><b>Light</b></h1>
+    <p class="cover-sub">A first-timer's guide to Africa — organized around the journey you're actually here to take.</p>
+    <p class="byline">Curated by Anthony · Diaspora Echo</p>
+  </div>
+  <div class="cover-foot">
+    <div class="lines">
+      Trace your roots<br>
+      Choose your journey<br>
+      The myths, retired
+    </div>
+    <span class="scrollcue">Scroll ↓</span>
+  </div>
+</header>
+
+<!-- OPENER -->
+<section class="opener">
+  <div class="wrap">
+    <span class="kicker">Before You Go</span>
+    <p class="dropcap">For many of us, a trip to Africa is not a vacation. It is a <span class="em">question</span> we've carried a long time, finally booking a flight.</p>
+    <div class="essay">
+      <p>You are not visiting a country. You are arriving on a continent of fifty-four nations, two thousand languages, and more landscapes than one passport could ever hold. And if you're traveling as part of the diaspora, you may be arriving with something heavier in your carry-on — a name that changed somewhere along the way, a story that went quiet, a question about where the line actually begins.</p>
+      <p>That's why this guide doesn't start with a map. It starts with you. Before you choose a country, choose the journey you're here to take. Are you tracing roots? Chasing beauty and ease? Standing in front of the wildlife you've pictured your whole life? Each of those is a different trip — different region, different season, even a different flight time home.</p>
+      <p>The goal of a first trip is not to see it all. It can't be done, and trying will only exhaust you. The goal is to pull one thread slowly, let it earn your full attention, and leave knowing you'll be back for the rest.</p>
+      <p>So start with the feeling, not the pin on the map. Pick your path below. The continent will meet you there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATHS INTRO -->
+<section class="pathsintro">
+  <div class="wrap">
+    <span class="kicker">Start Here</span>
+    <h2>What kind of <i>homecoming</i> are you after?</h2>
+    <p class="lede">Three journeys, three completely different trips. Pick the one that matches why you're going — then let the destinations, timing, and logistics fall into place.</p>
+    <div class="pathnav">
+      <a href="#roots">
+        <span class="n">PATH 01</span>
+        <h3>The Roots Journey</h3>
+        <p>For tracing heritage and standing where the story began. West Africa — and the shortest flight from home.</p>
+        <span class="go">Ghana · Senegal →</span>
+      </a>
+      <a href="#scenic">
+        <span class="n">PATH 02</span>
+        <h3>The Scenic Escape</h3>
+        <p>For beauty, culture and an easy first trip. Souks, coastlines and rooftop sunsets.</p>
+        <span class="go">Morocco · South Africa →</span>
+      </a>
+      <a href="#safari">
+        <span class="n">PATH 03</span>
+        <h3>The Safari Classic</h3>
+        <p>For the wildlife you've pictured your whole life — best earned, then rewarded with a beach.</p>
+        <span class="go">Kenya · Tanzania →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PATH 1: ROOTS -->
+<section class="path" id="roots">
+  <div class="wrap">
+    <div class="path-head">
+      <div class="path-num">01</div>
+      <div>
+        <span class="kicker">The Roots Journey</span>
+        <h2>Trace Your Heritage</h2>
+        <p class="path-tag">For travelers carrying a question about where the line begins — and ready to stand in the place it answers.</p>
+      </div>
+    </div>
+    <p class="path-why">This is the heart of a diaspora trip. West Africa was the departure point for much of the transatlantic slave trade, and its memorial sites — the castles, the doors, the islands — are not attractions to tick off. They're places to feel, slowly, ideally with people you love beside you. The reward is twofold: the gravity of the history, and the warmth of a present-day welcome that surprises almost everyone on their first visit.</p>
+    <div class="strip">
+      <div class="cell"><span class="kicker">Flight from US East Coast</span><span class="v">~8–11 hrs · often direct</span></div>
+      <div class="cell"><span class="kicker">Best For</span><span class="v">Families, reunions, multigenerational</span></div>
+      <div class="cell"><span class="kicker">Best Time</span><span class="v">Nov–Mar (dry season)</span></div>
+    </div>
+    <div class="echo"><b>The Diaspora Echo Layer</b><span>This is where research meets the road. Begin with genealogy and ancestral context, then let the destinations be chosen by your story — not the other way around.</span></div>
+    <div class="dests">
+      <div class="dest">
+        <div class="art a-ghana"><span class="sun"></span><span class="label">Cape Coast Castle</span></div>
+        <div class="body">
+          <h4>Ghana</h4>
+          <span class="country">Accra · Cape Coast · Elmina</span>
+          <p>The diaspora's warmest welcome and its most moving heritage. Accra's creative energy and nightlife sit alongside the sobering slave-trade castles on the coast. Ghana's "Year of Return" made it the symbolic home of the homecoming movement.</p>
+          <div class="tip"><b>Insider Tip</b>Reserve a full, unhurried day for Cape Coast Castle with a guide — and time a December visit for the "Detty December" festival season.</div>
+        </div>
+      </div>
+      <div class="dest">
+        <div class="art a-senegal"><span class="sun"></span><span class="label">Gorée Island</span></div>
+        <div class="body">
+          <h4>Senegal</h4>
+          <span class="country">Dakar · Gorée Island</span>
+          <p>The closest point on the continent to the US — and home to Gorée Island and the House of Slaves, one of the most significant memorial sites in the Atlantic world. Dakar pairs French-African cosmopolitan energy with deep Wolof culture.</p>
+          <div class="tip"><b>Insider Tip</b>Take the morning ferry to Gorée before the day-trip crowds; the light and the quiet make the visit far more powerful.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATH 2: SCENIC -->
+<section class="path" id="scenic">
+  <div class="wrap">
+    <div class="path-head">
+      <div class="path-num">02</div>
+      <div>
+        <span class="kicker">The Scenic Escape</span>
+        <h2>Beauty &amp; Ease</h2>
+        <p class="path-tag">For the first-timer who wants wonder without the long haul — color, culture, coastline and the gentlest landing on the continent.</p>
+      </div>
+    </div>
+    <p class="path-why">Not every first trip needs to carry weight. Sometimes the point is the sheer sensory pleasure of a place — a medina at golden hour, a rooftop bar over the ocean, a city wrapped around a mountain. These destinations are the easiest to navigate, the most solo- and couple-friendly, and the simplest sell to a travel companion who's nervous about a "big" trip.</p>
+    <div class="strip">
+      <div class="cell"><span class="kicker">Flight from US East Coast</span><span class="v">Morocco ~7–8 hrs · S. Africa ~15–18 hrs</span></div>
+      <div class="cell"><span class="kicker">Best For</span><span class="v">Solo, couples, nervous first-timers</span></div>
+      <div class="cell"><span class="kicker">Best Time</span><span class="v">Morocco: spring/fall · S. Africa: Nov–Mar</span></div>
+    </div>
+    <div class="dests">
+      <div class="dest">
+        <div class="art a-morocco"><span class="sun"></span><span class="label">The Marrakech medina</span></div>
+        <div class="body">
+          <h4>Morocco</h4>
+          <span class="country">Marrakech · The Sahara's edge</span>
+          <p>North Africa through all five senses at once. Lose yourself in the souks, retreat to a courtyard riad, watch the sun set from a rooftop, then sleep under desert stars. Short flights and easy logistics make it the classic gateway.</p>
+          <div class="tip"><b>Insider Tip</b>Hire a guide for your first medina morning only — learn the lay of the land, then explore solo and unhurried after.</div>
+        </div>
+      </div>
+      <div class="dest">
+        <div class="art a-southafrica"><span class="sun"></span><span class="label">Table Mountain &amp; two oceans</span></div>
+        <div class="body">
+          <h4>South Africa</h4>
+          <span class="country">Cape Town · The Winelands</span>
+          <p>The single easiest first trip on the continent: a mountain in the middle of a city between two oceans, world-class food and wine, and a safari only a short flight away. Familiar infrastructure eases you in gently.</p>
+          <div class="tip"><b>Insider Tip</b>Book Table Mountain's cable car for a clear, low-wind morning, and add Stellenbosch in the Winelands as an easy day trip.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATH 3: SAFARI -->
+<section class="path" id="safari">
+  <div class="wrap">
+    <div class="path-head">
+      <div class="path-num">03</div>
+      <div>
+        <span class="kicker">The Safari Classic</span>
+        <h2>Into the Wild</h2>
+        <p class="path-tag">For the bucket-list image you've held since childhood — best earned over a few days, then rewarded with white sand and turquoise water.</p>
+      </div>
+    </div>
+    <p class="path-why">This is the Africa of the imagination, and it lives up to it. East Africa's plains deliver lions, elephants and, in season, the great migration. It's the longest flight of the three paths and the one whose budget scales fastest — but pair it with an island finish and you get the trip people talk about for the rest of their lives. Family-friendly, though the per-person cost climbs with comfort.</p>
+    <div class="strip">
+      <div class="cell"><span class="kicker">Flight from US East Coast</span><span class="v">~15–18+ hrs · usually 1 connection</span></div>
+      <div class="cell"><span class="kicker">Best For</span><span class="v">Bucket-listers, families (budget scales)</span></div>
+      <div class="cell"><span class="kicker">Best Time</span><span class="v">Jul–Oct (migration) · Jun–Feb dry spells</span></div>
+    </div>
+    <div class="dests">
+      <div class="dest">
+        <div class="art a-kenya"><span class="sun"></span><span class="label">The Maasai Mara at dawn</span></div>
+        <div class="body">
+          <h4>Kenya</h4>
+          <span class="country">Nairobi · Maasai Mara</span>
+          <p>The most iconic introduction to wildlife on Earth. The Mara delivers the big cats, elephants and — in season — the great migration, with Nairobi as a genuinely interesting launch city and an easy hop to the coast.</p>
+          <div class="tip"><b>Insider Tip</b>Choose a conservancy bordering the main reserve: fewer vehicles, off-road drives, and night safaris the national park won't allow.</div>
+        </div>
+      </div>
+      <div class="dest">
+        <div class="art a-tanzania"><span class="sun"></span><span class="label">Dhows off Zanzibar</span></div>
+        <div class="body">
+          <h4>Tanzania &amp; Zanzibar</h4>
+          <span class="country">Serengeti · Stone Town · the coast</span>
+          <p>The dream "bush and beach." Pair a Serengeti safari with a short flight to Zanzibar, where a historic Swahili old town gives way to powder-white sand, spice farms and dhow boats on a turquoise sea.</p>
+          <div class="tip"><b>Insider Tip</b>Base on Zanzibar's east coast (Paje, Jambiani) for calm lagoons, or the north (Nungwi) for swimmable tides at any hour.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLIGHT REALITY -->
+<section class="flights">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The Flight Reality</h2>
+      <span class="kicker">From the US, Roughly</span>
+    </div>
+    <p class="note">Here's the part most guides skip — and it's good news for a roots trip. From the US East Coast, West Africa is the <em>shortest</em> hop on the continent, often a single direct flight. The wildlife destinations are the long hauls. Plan your stamina (and jet lag) accordingly.</p>
+    <div class="bars">
+      <div class="bar"><span class="dest-n">Dakar 🇸🇳</span><div class="track"><div class="fill" style="width:42%"></div></div><span class="hrs">~8 hrs</span></div>
+      <div class="bar"><span class="dest-n">Marrakech 🇲🇦</span><div class="track"><div class="fill" style="width:42%"></div></div><span class="hrs">~7–8 hrs</span></div>
+      <div class="bar"><span class="dest-n">Accra 🇬🇭</span><div class="track"><div class="fill" style="width:55%"></div></div><span class="hrs">~10–11 hrs</span></div>
+      <div class="bar"><span class="dest-n">Nairobi 🇰🇪</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="hrs">~15 hrs+</span></div>
+      <div class="bar"><span class="dest-n">Cape Town 🇿🇦</span><div class="track"><div class="fill" style="width:95%"></div></div><span class="hrs">~17–18 hrs+</span></div>
+    </div>
+    <p class="caption">Approximate door-to-door air time from the US East Coast; actual times vary by routing, season, and connections. Always confirm when booking.</p>
+  </div>
+</section>
+
+<!-- SOLO VS FAMILY + KNOW BEFORE YOU GO -->
+<section class="know">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Solo or Together?</h2>
+      <span class="kicker">Choosing How You Go</span>
+    </div>
+    <div class="split">
+      <div class="col">
+        <h4>Going Solo</h4>
+        <p class="sub">Freedom · flexibility · your own pace</p>
+        <ul>
+          <li>Morocco and Cape Town are the most solo-friendly: walkable, social, easy to meet other travelers.</li>
+          <li>You set the emotional pace at heritage sites — no need to manage anyone else's reaction but your own.</li>
+          <li>Cheaper to move and pivot; join a small-group tour for the safari leg to share costs and guides.</li>
+          <li>Lean on vetted local guides so you're supported without sacrificing independence.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Going as a Family</h4>
+        <p class="sub">Shared memory · legacy · the trip you talk about forever</p>
+        <ul>
+          <li>The roots journey shines as a multigenerational trip — reunions, milestone birthdays, elders sharing memory in place.</li>
+          <li>Safari is a classic family bucket-list; just know the per-person cost climbs with comfort and private vehicles.</li>
+          <li>Build in rest days and downtime — heritage sites are emotionally heavy for kids and adults alike.</li>
+          <li>Capture it: oral history with elders before and after turns a trip into a family record.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:60px">
+      <h2>The Practical Pages</h2>
+      <span class="kicker">Know Before You Go</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="ix">i</span>
+        <h4>Visas &amp; Health</h4>
+        <ul>
+          <li>Check visa rules per country — many offer e-visas or visa-on-arrival; some are visa-free.</li>
+          <li>Yellow fever proof is required for some countries, especially arriving from an at-risk one. Carry the certificate.</li>
+          <li>Ask a travel clinic about malaria prophylaxis 4–6 weeks ahead — it's region-specific.</li>
+          <li>Passport valid 6+ months with blank pages; store a cloud copy.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="ix">ii</span>
+        <h4>Money &amp; Budget</h4>
+        <ul>
+          <li>Carry some clean USD/EUR cash for visas, tips and rural areas; small bills win.</li>
+          <li>Notify your bank; bring two cards from different networks.</li>
+          <li>Safari is the splurge; West Africa and cities are gentler on the wallet.</li>
+          <li>Budget tipping for guides, drivers and porters separately.</li>
+        </ul>
+      </div>
+      <div class="card myth">
+        <span class="ix">iii</span>
+        <h4>Myths, Retired</h4>
+        <ul>
+          <li>"It's all one safari destination."<span class="real">54 countries — cities, coasts, mountains, deserts.</span></li>
+          <li>"It's universally unsafe."<span class="real">Risk is local and specific; most tourist regions are very welcoming.</span></li>
+          <li>"You need to rough it."<span class="real">World-class hotels and seamless logistics exist everywhere.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="ix">iv</span>
+        <h4>First-Trip Etiquette</h4>
+        <ul>
+          <li>Always ask before photographing people; connect first.</li>
+          <li>Learn a few greetings in the local language — it changes every interaction.</li>
+          <li>Dress modestly at religious and rural sites; pack a light layer.</li>
+          <li>Slow down. "Africa time" isn't a flaw to fix — it's the trip working.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTES -->
+<section class="routes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Your First Trip, Mapped</h2>
+      <span class="kicker">One Route Per Path</span>
+    </div>
+
+    <div class="route">
+      <div class="route-h">
+        <span class="kicker">Path 01 · Roots</span>
+        <h3>Roots &amp; Return</h3>
+        <p class="days">9–11 DAYS · WEST AFRICA</p>
+      </div>
+      <div class="route-body">
+        <p>The homecoming, done with room to breathe. Start in the city, move to the coast for the heritage sites, and leave time to simply be present rather than rushing between stops.</p>
+        <div class="pathline">
+          <span class="stop">Accra</span><span class="arr">→</span>
+          <span class="stop">Cape Coast</span><span class="arr">→</span>
+          <span class="stop">Elmina</span><span class="arr">→</span>
+          <span class="stop">Dakar + Gorée</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="route">
+      <div class="route-h">
+        <span class="kicker">Path 02 · Scenic</span>
+        <h3>The Soft Landing</h3>
+        <p class="days">8–12 DAYS · NORTH or SOUTH</p>
+      </div>
+      <div class="route-body">
+        <p>Maximum wonder, minimum friction. A short flight, a walkable city, and beauty around every corner — the easiest possible introduction to the continent.</p>
+        <div class="pathline">
+          <span class="stop">Marrakech</span><span class="arr">→</span>
+          <span class="stop">Atlas Mountains</span><span class="arr">→</span>
+          <span class="stop">Sahara</span><span class="arr">→</span>
+          <span class="stop">(or Cape Town + Winelands)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="route">
+      <div class="route-h">
+        <span class="kicker">Path 03 · Safari</span>
+        <h3>Bush &amp; Beach</h3>
+        <p class="days">11–14 DAYS · EAST AFRICA</p>
+      </div>
+      <div class="route-body">
+        <p>The dream trip in the right order: earn the wildlife first, then collapse onto an island to process it all with sand between your toes.</p>
+        <div class="pathline">
+          <span class="stop">Nairobi</span><span class="arr">→</span>
+          <span class="stop">Maasai Mara</span><span class="arr">→</span>
+          <span class="stop">Serengeti</span><span class="arr">→</span>
+          <span class="stop">Zanzibar</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTRO -->
+<section class="outro">
+  <div class="wrap">
+    <span class="kicker">One Last Thing</span>
+    <p>Don't try to see the continent. Choose your thread, pull it slowly, and let it pull you home.</p>
+    <a class="cta" href="#">Start Your Journey with Diaspora Echo</a>
+    <div class="mast">Diaspora Echo · First Light · No. 01 — Tracing Roots. Traveling Forward.</div>
+  </div>
+</section>
+
+</body>
+</html>
